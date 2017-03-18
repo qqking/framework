@@ -1,58 +1,6 @@
-/**
- * Created by Administrator on 2017/3/15 0015.
- */
-
-/*
-// 框架结构第一个版本
-// 利用沙箱模式
-//传入全局对象window，减少搜索提高效率
-(function( global ){
-    var document = global.document,
-        arr = [],
-        push = arr.push;
-
-    function init( selector ){
-        //this.elements = document.querySelectorAll( selector )
-        push.apply(this,document.querySelectorAll( selector ));
-    }
-
-    var createInit = function ( selector ){
-        return new init( selector );
-    }
-
-    global.$ = createInit;
-}( window ))
-*/
 
 
-/*// 框架结构第二个版本
-// 利用沙箱模式
-//传入全局对象window，减少搜索提高效率
-(function(global){
-    var document = global.document,
-        arr = [];
-        push = arr.push;
-    //使用工厂模式创建init对象 省去new
-    var createInit = function( selector ){
-        return new createInit.prototype.init(selector)
-    };
-    // 置换createInit原型
-    createInit.prototype = {
-        constructor:createInit,
-    };
-    // 给createInit的原型动态添加init函数，在赋值给init
-    var init = createInit.prototype.init = function(selector){
-        push.apply(this,document.querySelectorAll( selector ));
-    }
-    //init原型继承与createInit原型
-    init.prototype = createInit.prototype;
-    //把工厂模式模式暴露出去
-    global.$ = createInit;
-}(window));*/
-
-
-
-// 框架结构第三版
+// 框架结构
 (function(global){
     var document = global.document,
         arr = [],
